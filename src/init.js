@@ -28,6 +28,24 @@ $(document).ready(function() {
       Math.random() * 1000
     );
     $('body').append(dancer.$node);
+    dancers.push(dancer);
   });
+
+  $('.lineUpButton').on('click', function(event) {
+    // $('span.dancer').css({left: "0"});
+    if ($(this).hasClass('linedUpLeft')) {
+      dancers.forEach(dancer => dancer.setPosition(dancer._top, dancer._left));
+      $(this).removeClass('linedUpLeft');
+      $(this).html('line up dancers');
+      handler = setInterval(interact, 2000);
+    } else {
+      $('span.dancer').css({left: "0"});
+      $(this).addClass('linedUpLeft');
+      $(this).html('get back on the dancefloor');
+      clearInterval(handler);
+    }
+  });
+
+  
 });
 
