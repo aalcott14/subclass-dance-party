@@ -54,9 +54,6 @@ Dancer.prototype.resetVector = function() {
 Dancer.prototype.updateVector = function(dancer, distance) {
   var t = this.getCenter();
   var d = dancer.getCenter();
-  if (dancer === mouse) {
-    d = {y: mouse._top, x: mouse._left};
-  }
   // console.log('initial coord ', this._vector.x, this._vector.y);
   var dx = (t.x - d.x);
   dx *= dx;
@@ -67,10 +64,10 @@ Dancer.prototype.updateVector = function(dancer, distance) {
     return;
   }
   if (t.x !== d.x) {
-    this._vector.x = this._vector.x + ((distance >> 5) / (t.x - d.x));
+    this._vector.x = this._vector.x + (Math.sqrt(distance) * 5) / (t.x - d.x);
   }
   if (t.y !== d.y) {
-    this._vector.y = this._vector.y + ((distance >> 5) / (t.y - d.y));
+    this._vector.y = this._vector.y + (Math.sqrt(distance) * 5) / (t.y - d.y);
   }
   // console.log('final coord ', this._vector.x, this._vector.y);
   // console.log('mouse ', d.x, d.y, distance);

@@ -112,6 +112,6 @@ body, a:link, a:visited, a:active{
 }
 
 .dancer {
-  transition: left 4s, right 4s, transform 4s;/* ease-in-out 0s;*/
+  transition: left 2s, top 2s, transform 2s;/* ease-in-out 0s;*/
 
 }

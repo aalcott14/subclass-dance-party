@@ -26,25 +26,16 @@
       dancers.forEach(function(dancer) {
         dancer.resetVector();
         dancers.forEach(function(dancer2) {
-          dancer.updateVector(dancer2, 150);
+          dancer.updateVector(dancer2, 200);
         });
-        dancer.updateVector(mouse, 250);
-        console.log('mouse X coordinates: ' + mouse._left);
-        console.log('mouse Y coordinates: ' + mouse._top);
         //console.log(dancer._vector);
         //console.log(bounds);
         dancer.newPosition(bounds.right, bounds.bottom);
       });
     };
-
-    var mouse;
-
     $(document).ready(function() {
       handler = setInterval(interact, 2000);
-      $("body").mousemove(function (event) {
-        mouse = new Dancer(event.screenY, event.screenX);
-        //console.log(event);
-      });
+      
     });
       
     
