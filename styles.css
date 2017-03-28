@@ -31,13 +31,16 @@ body, a:link, a:visited, a:active{
 .dancer-bounce {
   height: 30px;
   width: 30px;
-  border: 0;
+  border-color: yellow;
   position: absolute;
   background-color: blue;
   /*left: 100px;
   top: 120px;*/
   border-radius: 50%;
-  animation: 0.5s ease-out 0s infinite normal bounce;
+  animation: .5s ease-out 0s infinite normal bounce;
+  /*animation-timing-function: ease-out;
+  animation-name: bounce;
+  animation-duration: .5s;*/
 }
 
 /* @keyframes bounce {
@@ -79,5 +82,28 @@ body, a:link, a:visited, a:active{
     height: 30px;
     width: 30px;
     transform: translateY(0px);
+  }
+}
+
+.dancer-slide {
+  width: 30px;
+  height: 30px;
+  background-color: steelblue;
+  
+  position: absolute;
+/*   transform: translateX(0px); */
+  animation: 3s ease-out 0s infinite normal slide;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(0px) skew(-30deg);
+  }
+  50% {
+    transform: translateX(200px) skewX(30deg)
+  }
+  
+ 100% {
+    transform: translateX(0px) skew(-30deg)
   }
 }

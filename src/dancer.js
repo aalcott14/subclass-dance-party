@@ -14,7 +14,7 @@ var Dancer = function(top, left, timeBetweenSteps) {
 
 Dancer.prototype.step = function() {
   var context = this;
-  console.log(context);
+  //console.log(context);
   // the basic dancer doesn't do anything interesting at all on each step,
   // it just schedules the next step
   //console.log('context', context.step.toString());

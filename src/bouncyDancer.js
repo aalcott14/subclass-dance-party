@@ -14,5 +14,6 @@ BouncyDancer.prototype.oldStep = Dancer.prototype.step;
 
 BouncyDancer.prototype.step = function() {
   this.$node.addClass('dancer-bounce');
+  this.$node.css("animation-duration", this._timeBetweenSteps / 500 + "s");
 
 };
