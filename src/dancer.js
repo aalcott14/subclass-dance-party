@@ -78,22 +78,48 @@ Dancer.prototype.updateVector = function(dancer, distance) {
 
 Dancer.prototype.newPosition = function(maxx, maxy) {
   //console.log(this._top, this._left);
+  this._vector.y = Math.min(maxy / 3, this._vector.y);
+  this._vector.x = Math.min(maxx / 3, this._vector.x);
   this._top += this._vector.y;
+
   this._left += this._vector.x;
   if (this._top < 0) {
-    this._top = maxy + this._top;
+    this._top = -this._top;
   }
   if (this._top > maxy) {
-    this._top = this._top - maxy;
+    // this._top -= Math.floor(this._top / maxy) * maxy;
+    while(this._top > maxy)
+      this._top -= maxy;
+    // this._top = Math.floor(this._top / maxy)  - this._top;
   }
   if (this._left < 0) {
-    this._left = maxx - this._left;
+    this._left = -this._left;
   }
   if (this._left > maxx) {
-    this._left -= maxx;
+    // this._left -= Math.floor(this._top / maxx) * maxx;
+    while(this._left > maxx)
+      this._left -= maxx;
+    // this._left = Math.floor(this._top/maxx) - this._left;
+  }
+  if(this._top > maxy || this._top < 0 || this._left < 0 || this._left > maxx) {
+    console.log("out of bounds ", this._top, this._left);
   }
   this.setPosition(this._top, this._left);
   //console.log(this._top, this._left);
+};
+
+Dancer.prototype.updateAccordingToMouse = function() {
+  //console.log(mouse);
+  var t = this.getCenter();
+  var m = mouse;
+  var dx = t.x - m.x;
+  dx *= dx;
+  var dy = t.y - m.y;
+  dy *= dy;
+  if (dx + dy < 150 * 150) {
+    this._vector.x = 5 * (t.x - m.x);
+    this._vector.y = 5 * (t.y - m.y);
+  }
 };
 
 
